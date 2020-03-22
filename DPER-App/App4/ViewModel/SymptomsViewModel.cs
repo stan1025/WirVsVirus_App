@@ -9,45 +9,54 @@ using System.Collections.ObjectModel;
 using DPER_App.View;
 using System.Diagnostics;
 using vdivsvirus.Types;
+using DPER_App.Services;
+using DPER_App.Models;
 
 namespace DPER_App.ViewModel
 {
     public class SymptomsViewModel : BaseViewModel
     {
+        private IBackendSymptome itfSymptome;
 
-        
+        private static Guid userId;
+
         public Command FinishCommand { get; set; }
         public SymptomsViewModel()
         {
+            //TODO: besserer Ort, muss für einen Nutzer fix sein
+            userId = Guid.NewGuid();
+
             FinishCommand = new Command(async () => await ExecuteFinishCommand());
-            FeverValue = 35;
+                        itfSymptome = new RestClient();
+            //List<SymptomeIdentData> ItemsList = itfSymptome.GetSymptomesAsync().Result;
             List<SymptomeIdentData> ItemsList = dummyData();
 
-            Diarrhea = new Item();
-            Cough = new Item();
-            Limp = new Item();
-            OutOfBreath = new Item();
-            Aches = new Item();
-            Sorethroat = new Item();
-            Headache = new Item();
-            Frost = new Item();
-            Nausea = new Item();
-            Sniff = new Item();
+            Fever = new Item<float>();
+            Diarrhea = new Item<int>();
+            Cough = new Item<int>();
+            Limp = new Item<int>();
+            OutOfBreath = new Item<int>();
+            Aches = new Item<int>();
+            Sorethroat = new Item<int>();
+            Headache = new Item<int>();
+            Frost = new Item<int>();
+            Nausea = new Item<int>();
+            Sniff = new Item<int>();
 
 
 
             foreach (SymptomeIdentData item in ItemsList)
-            {                
-                int min = int.Parse(item.settings.Substring(0, item.settings.IndexOf(";") ));
+            {
+                int min = int.Parse(item.settings.Substring(0, item.settings.IndexOf(";")));
                 string feverSubString = item.settings.Substring(item.settings.IndexOf(";") + 1);
-                int max = int.Parse(feverSubString.Substring(0, feverSubString.IndexOf(";"))); 
+                int max = int.Parse(feverSubString.Substring(0, feverSubString.IndexOf(";")));
 
                 switch (item.name)
                 {
                     case "Fieber":
-                        FeverMin = min;
-                        FeverMax = max;
-                        feverID = item.id;
+                        Fever.Min = min;
+                        Fever.Max = max;
+                        Fever.ID = item.id;
 
                         break;
                     case "Schüttelfrost":
@@ -75,7 +84,7 @@ namespace DPER_App.ViewModel
                         Aches.Max = max;
                         Aches.ID = item.id;
                         break;
-                            case "Halsschmerz":
+                    case "Halsschmerz":
                         Sorethroat.Min = min;
                         Sorethroat.Max = max;
                         Sorethroat.ID = item.id;
@@ -91,14 +100,14 @@ namespace DPER_App.ViewModel
                         Nausea.ID = item.id;
                         break;
                     case "Verstopfte Nase":
-                        
+
                         Sniff.Max = max;
-                        Sniff.Min = min;                        
+                        Sniff.Min = min;
                         Sniff.ID = item.id;
                         break;
                     case "Durchfall":
 
-                        
+
                         Diarrhea.Max = max;
                         Diarrhea.Min = min;
                         Diarrhea.ID = item.id;
@@ -117,8 +126,9 @@ namespace DPER_App.ViewModel
         private int _contactIndex;
         public int ContactIndex
         {
-            get {
-                
+            get
+            {
+
                 if (Contact == true)
                 {
                     _contactIndex = 0;
@@ -128,7 +138,7 @@ namespace DPER_App.ViewModel
                     _contactIndex = 1;
                 }
                 return _contactIndex;
-            } 
+            }
             set
             {
                 _contactIndex = value;
@@ -149,82 +159,80 @@ namespace DPER_App.ViewModel
             get => _contact;
             set { _contact = value; }
         }
-             
-        private float _feverValue;
-        public float FeverValue
+
+        private Item<float> _feverValue;
+        public Item<float> Fever
         {
             get => _feverValue;
             set { _feverValue = value; }
         }
-        private string feverID;
-        public float FeverMin { get; private set; }
-        public float FeverMax { get; private set; }
-        private Item _frost;
-        public Item Frost
+
+        private Item<int> _frost;
+        public Item<int> Frost
         {
             get => _frost;
             set { _frost = value; }
         }
-        
-        private Item _limp;
-        public Item Limp
+
+        private Item<int> _limp;
+        public Item<int> Limp
         {
             get => _limp;
             set { _limp = value; }
         }
-        
 
-        private Item _aches;
-        public Item Aches
+
+        private Item<int> _aches;
+        public Item<int> Aches
         {
             get => _aches;
             set { _aches = value; }
         }
-        
-        private Item _cough;
-        public Item Cough
+
+        private Item<int> _cough;
+        public Item<int> Cough
         {
             get => _cough;
             set { _cough = value; }
         }
-       
-        private Item _sniff;
-        public Item Sniff
+
+        private Item<int> _sniff;
+        public Item<int> Sniff
         {
             get => _sniff;
             set { _sniff = value; }
         }
 
-        private Item _diarrhea;
-        public Item Diarrhea
+        private Item<int> _diarrhea;
+        public Item<int> Diarrhea
         {
             get => _diarrhea;
             set { _diarrhea = value; }
         }
-     
-        private Item _sorethroat;
-        public Item Sorethroat
+
+        private Item<int> _sorethroat;
+        public Item<int> Sorethroat
         {
             get => _sorethroat;
             set { _sorethroat = value; }
         }
-     
-        private Item _headache;
-        public Item Headache
+
+        private Item<int> _headache;
+        public Item<int> Headache
         {
             get => _headache;
             set { _headache = value; }
         }
-      
-        private Item _outOfBreath;
-        public Item OutOfBreath
+
+        private Item<int> _outOfBreath;
+        public Item<int> OutOfBreath
         {
             get => _outOfBreath;
             set { _outOfBreath = value; }
         }
 
-        private Item _nausea;
-        public Item Nausea
+        private Item<int> _nausea;
+        public Item<int> Nausea
         {
             get => _nausea;
             set { _nausea = value; }
@@ -237,7 +245,22 @@ namespace DPER_App.ViewModel
 
             try
             {
-                
+                SymptomeInputDataSet data = new SymptomeInputDataSet();
+                data.time = DateTime.Now;
+                data.userID = userId;
+                data.symptomes = new List<SymptomeInputData>();
+                data.symptomes.Add(new SymptomeInputData() { id = Fever.ID, strength = Fever.Value });
+                data.symptomes.Add(new SymptomeInputData() { id = Diarrhea.ID, strength = Diarrhea.Value });
+                data.symptomes.Add(new SymptomeInputData() { id = Cough.ID, strength = Cough.Value });
+                data.symptomes.Add(new SymptomeInputData() { id = Limp.ID, strength = Limp.Value });
+                data.symptomes.Add(new SymptomeInputData() { id = OutOfBreath.ID, strength = OutOfBreath.Value });
+                data.symptomes.Add(new SymptomeInputData() { id = Aches.ID, strength = Aches.Value });
+                data.symptomes.Add(new SymptomeInputData() { id = Sorethroat.ID, strength = Sorethroat.Value });
+                data.symptomes.Add(new SymptomeInputData() { id = Headache.ID, strength = Headache.Value });
+                data.symptomes.Add(new SymptomeInputData() { id = Frost.ID, strength = Frost.Value });
+                data.symptomes.Add(new SymptomeInputData() { id = Nausea.ID, strength = Nausea.Value });
+                data.symptomes.Add(new SymptomeInputData() { id = Sniff.ID, strength = Sniff.Value });
+                itfSymptome.SendSymptomeDataSetAsync(data);
             }
             catch (Exception ex)
             {
@@ -252,7 +275,7 @@ namespace DPER_App.ViewModel
         {
 
             List<SymptomeIdentData> list = new List<SymptomeIdentData>();
-            list.Add( new SymptomeIdentData() { name = "Durchfall", settings = "0;100;1" });
+            list.Add(new SymptomeIdentData() { name = "Durchfall", settings = "0;100;1" });
             list.Add(new SymptomeIdentData() { name = "Übelkeit", settings = "0;100;1" });
             list.Add(new SymptomeIdentData() { name = "Fieber", settings = "35;45;1" });
             list.Add(new SymptomeIdentData() { name = "Abgeschlagenheit", settings = "0;100;1" });

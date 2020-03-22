@@ -137,7 +137,7 @@ namespace vdivsvirus.Types
         /// <summary>
         /// Symptome ID
         /// </summary>
-        public int id { get; set; }
+        public string id { get; set; }
 
         /// <summary>
         /// Symptome Strength
