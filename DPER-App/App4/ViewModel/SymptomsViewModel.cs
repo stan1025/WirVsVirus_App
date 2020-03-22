@@ -156,7 +156,7 @@ namespace DPER_App.ViewModel
             get => _feverValue;
             set { _feverValue = value; }
         }
-        private int feverID;
+        private string feverID;
         public float FeverMin { get; private set; }
         public float FeverMax { get; private set; }
         private Item _frost;

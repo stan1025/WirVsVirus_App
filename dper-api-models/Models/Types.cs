@@ -24,6 +24,9 @@ namespace vdivsvirus.Types
     #endregion
 
 
+
+
+
     #region Symptome Data Set Data Types
 
     /// <summary>
@@ -72,14 +75,17 @@ namespace vdivsvirus.Types
         /// </summary>
         public SymptomeIdentData IdentData { get; set; }
 
-
-
-
         /// <summary>
         /// Symptome Propability Factor 
         /// Setting for Proability Data Analysis 
         /// </summary>
         public float symptomePropability { get; set; }
+
+        /// <summary>
+        /// Threshold Propability Factor 
+        /// Setting for Get Recommendation Analysis 
+        /// </summary>
+        public float thresholdFactor { get; set; }
 
         /// <summary>
         /// Scaling Function for mapping of input value
@@ -98,7 +104,7 @@ namespace vdivsvirus.Types
         /// <summary>
         /// Symptome Identifier
         /// </summary>
-        public int id { get; set; }
+        public string id { get; set; }
 
         /// <summary>
         /// Symptome Input Classifier
@@ -116,7 +122,7 @@ namespace vdivsvirus.Types
         public string desc { get; set; }
 
         /// <summary>
-        /// Symptome Input Settings //Min;Max;Steplength
+        /// Symptome Input Settings 
         /// </summary>
         public string settings { get; set; }
     }
@@ -182,6 +188,83 @@ namespace vdivsvirus.Types
 
     #region Disease Data Set Data Types
 
+    public class DiseaseData
+    {
+        /// <summary>
+        /// Disease Identifier
+        /// </summary>
+        public string id { get; set; }
+        /// <summary>
+        /// Disease Propability Finding
+        /// </summary>
+        public float propability { get; set; }
+    }
+
+    public class DiseaseAcknowledgement
+    {
+        /// <summary>
+        /// Disease Identifier
+        /// </summary>
+        public string id { get; set; }
+        /// <summary>
+        /// Acknowledged Disease Finding
+        /// </summary>
+        public bool acknowledged { get; set; }
+    }
+
+
+    /// <summary>
+    /// Identification Information 
+    /// about Diseases
+    /// </summary>
+    public class DiseaseIdentData
+    {
+
+        /// <summary>
+        /// Disease Identifier
+        /// </summary>
+        public string id { get; set; }
+
+        /// <summary>
+        /// Disease Display Type
+        /// </summary>
+        public string name { get; set; }
+
+        /// <summary>
+        /// Disease Display Description
+        /// </summary>
+        public string desc { get; set; }
+
+        /// <summary>
+        /// Disease Information Link 
+        /// </summary>
+        public string infoLink { get; set; }
+    }
+
+    /// <summary>
+    /// Disease Type with Ident and Internal Data
+    /// </summary>
+    public class DiseaseType
+    {
+        /// <summary>
+        /// Disease Ident Data
+        /// </summary>
+        public DiseaseIdentData IdentData { get; set; }
+
+        /// <summary>
+        /// Returns a recommendation message
+        /// based on the propability values from the
+        /// analysis.
+        /// </summary>
+        public Func<float, string> GetRecommendation { get; set; }
+
+        /// <summary>
+        /// Returns the function to calculate the propability
+        /// based on the given symptome data set.
+        /// </summary>
+        public Func<SymptomeDataSet, float> propabilityAlgorithm { get; set; }
+    }
+
     /**
      * Structs of AuthenticationData
      */
@@ -192,12 +275,12 @@ namespace vdivsvirus.Types
     }
 
     /**
-     * Structs of DiseaseDataSet
+     * Structs of DiseaseAcknowledgeSet
      */
-    public class DiseaseDataSet
+    public class DiseaseAcknowledgeSet
     {
         public Guid userID { get; set; }
-        public int diseaseID { get; set; }
+        public string diseaseID { get; set; }
         public bool testResult { get; set; }
         public AuthenticationData authenticator { get; set; }
         public DateTime time { get; set; } //milliseconds since 1.1.1970 (UTC)
@@ -214,7 +297,7 @@ namespace vdivsvirus.Types
     {
         public Guid userID { get; set; }
         public DateTime time { get; set; }
-        public Dictionary<int, float> symptomes { get; set; }
+        public List<SymptomeInputData> symptomes { get; set; }
     }
 
     /**
@@ -224,7 +307,7 @@ namespace vdivsvirus.Types
     {
         public Guid userID { get; set; }
         public DateTime time { get; set; }
-        public Dictionary<int, float> propabilities { get; set; }
+        public List<DiseaseData> propabilities { get; set; }
     }
 
     #endregion
@@ -248,15 +331,6 @@ namespace vdivsvirus.Types
 
     #region Response Data Set Data Types
 
-    /**
-     * Structs of DiseaseType
-     */
-    public class DiseaseType
-    {
-        public int id { get; set; } //DiseaseID
-        public string name { get; set; } //DiseaseName
-        public string desc { get; set; } //DiseaseDescription
-    }
 
     /**
      * Structs of ResponseDataSet 
@@ -265,8 +339,8 @@ namespace vdivsvirus.Types
     {
         public Guid userID { get; set; }
         public DateTime time { get; set; }
-        public Dictionary<int, float> propabilities { get; set; }
-        public Dictionary<int, DiseaseType> diseaseTypes { get; set; }
+        public List<DiseaseData> propabilities { get; set; }
+        public List<DiseaseIdentData> diseaseTypes { get; set; }
         public string message { get; set; }
     }
 

@@ -12,6 +12,6 @@ namespace DPER_App.Services
 
         Task SendSymptomeDataSetAsync(SymptomeInputDataSet symptomes);
 
-        Task SendDiseaseDataSetAsync(Guid userId, DiseaseDataSet disease);
+        Task SendDiseaseDataSetAsync(Guid userId, DiseaseAcknowledgeSet disease);
     }
 }

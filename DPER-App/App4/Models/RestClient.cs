@@ -68,7 +68,7 @@ namespace DPER_App.Models
             }
         }
 
-        public async Task SendDiseaseDataSetAsync(Guid userId, DiseaseDataSet disease)
+        public async Task SendDiseaseDataSetAsync(Guid userId, DiseaseAcknowledgeSet disease)
         {
             var uri = new Uri(Url + "/symptome/SendDiseaseDataSet");
 
