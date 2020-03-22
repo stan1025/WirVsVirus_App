@@ -14,7 +14,7 @@ namespace DPER_App.Models
     public class RestClient : IBackendSymptome, IBackendFinding
     {
         HttpClient _client;
-        const string Url = "http://localhost:56398/api";
+        const string Url = "http://dper.us-east-1.elasticbeanstalk.com/api";
 
         public RestClient()
         {
