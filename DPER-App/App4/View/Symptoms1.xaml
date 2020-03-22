@@ -8,8 +8,8 @@
              x:Class="DPER_App.View.Symptome1">
     
     <ContentPage.Content>
-      <StackLayout>
-          <Label Text="Wie ist Ihre Temperatur?" />
+      <StackLayout Margin="15,5,5,5">
+          <Label Text="Wie hoch ist ihre Körpertemperatur?" />
             <!-- Wenn Min > default Max (1), muss maxvalue zuerst angegeben werden -->
             <Slider Maximum="{Binding Fever.Max}" Minimum="{Binding Fever.Min}" Value="{Binding Fever.Value}" ValueChanged="Slider_ValueChanged">
                
@@ -20,17 +20,17 @@
                 <Label Text="°C"/>
             </StackLayout>
            
-                <Label Text="Haben Sie Schüttelfrost?"/>
+                <Label Text="Haben Sie heute Schüttelfrost?" Margin="0,15,0,0"/>
             <Slider Maximum="{Binding Frost.Max}" Minimum="{Binding Frost.Min}"  Value="{Binding Frost.Value}" />
             <StackLayout Orientation="Horizontal" >
-                <Label HorizontalOptions ="Start">gar nicht</Label>
-                <Label HorizontalOptions = "EndAndExpand" Margin="0,0,15,0">sehr stark</Label>
+                <Label HorizontalOptions ="Start">nein</Label>
+                <Label HorizontalOptions = "EndAndExpand" Margin="0,0,15,0">ja, sehr stark</Label>
             </StackLayout>
-            <Label Text="Fühlen Sie sich schlapp?"/>
+            <Label Text="Fühlen Sie sich heute schlapp oder angeschlagen?" Margin="0,15,0,0"/>
             <Slider  Maximum="{Binding Limp.Max}" Minimum="{Binding Limp.Min}"   Value="{Binding Limp.Value}"/>
             <StackLayout Orientation="Horizontal" >
-                <Label HorizontalOptions ="Start">gar nicht</Label>
-                <Label HorizontalOptions = "EndAndExpand" Margin="0,0,15,0">sehr</Label>
+                <Label HorizontalOptions ="Start">nein</Label>
+                <Label HorizontalOptions = "EndAndExpand" Margin="0,0,15,0">ja, sehr stark</Label>
             </StackLayout>
             <Button Clicked="Button_Clicked" Text="Weiter"/> 
         </StackLayout>

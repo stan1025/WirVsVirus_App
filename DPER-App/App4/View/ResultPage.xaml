@@ -6,7 +6,7 @@
              mc:Ignorable="d"
              x:Class="DPER_App.View.ResultPage">
     <ContentPage.Content>
-        <StackLayout>
+        <StackLayout Margin="15,5,5,5">
             <Label Text="Ihr persönliches Ergbenis:" FontSize="Title"/>
             <Label Text="{Binding ResultMessage }"/>
             <Button Text="Okay" Clicked="Button_Clicked"/>

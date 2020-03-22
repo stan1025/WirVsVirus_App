@@ -6,34 +6,34 @@
              mc:Ignorable="d"
              x:Class="DPER_App.View.Symptoms3">
     <ContentPage.Content>
-        <StackLayout>
+        <StackLayout Margin="15,5,5,5">
             <Label Text="Haben Sie Durchfall?"/>
             <Slider  Maximum="{Binding Diarrhea.Max}" Minimum="{Binding Diarrhea.Min}" Value="{Binding Diarrhea.Value}"/>
             <StackLayout Orientation="Horizontal" >
-                <Label HorizontalOptions ="Start">gar nicht</Label>
-                <Label HorizontalOptions = "EndAndExpand" Margin="0,0,15,0">sehr stark</Label>
+                <Label HorizontalOptions ="Start">nein</Label>
+                <Label HorizontalOptions = "EndAndExpand" Margin="0,0,15,0">ja, sehr oft</Label>
             </StackLayout>
-            <Label Text="Haben Sie Halsschmerzen?"/>
+            <Label Text="Haben Sie heute Halsschmerzen?" Margin="0,15,0,0"/>
             
             <Slider Maximum="{Binding Sorethroat.Max}"  Minimum="{Binding Sorethroat.Min}"  Value="{Binding Sorethroat.Value}"/>
 
             <StackLayout Orientation="Horizontal" >
-                <Label HorizontalOptions ="Start">gar nicht</Label>
-                <Label HorizontalOptions = "EndAndExpand" Margin="0,0,15,0">sehr stark</Label>
+                <Label HorizontalOptions ="Start">nein</Label>
+                <Label HorizontalOptions = "EndAndExpand" Margin="0,0,15,0">ja, sehr stark</Label>
             </StackLayout>
-            <Label Text="Haben Sie Kopfschmerzen?"/>
+            <Label Text="Haben Sie heute Kopfschmerzen?" Margin="0,15,0,0"/>
             
             <Slider Maximum="{Binding Headache.Max}" Minimum="{Binding Headache.Min}"  Value="{Binding Headache.Value}"/>
             <StackLayout Orientation="Horizontal" >
-                <Label HorizontalOptions ="Start">gar nicht</Label>
-                <Label HorizontalOptions = "EndAndExpand" Margin="0,0,15,0">sehr stark</Label>
+                <Label HorizontalOptions ="Start">nein</Label>
+                <Label HorizontalOptions = "EndAndExpand" Margin="0,0,15,0">ja, sehr stark</Label>
             </StackLayout>
-            <Label Text="Haben Sie Atmenot?"/>
+            <Label Text="Sind Sie heute schneller außer Atem als sonst?" Margin="0,15,0,0"/>
             
             <Slider Maximum="{Binding OutOfBreath.Max}" Minimum="{Binding OutOfBreath.Min}"  Value="{Binding OutOfBreath.Value}"/>
             <StackLayout Orientation="Horizontal" >
-                <Label HorizontalOptions ="Start">gar nicht</Label>
-                <Label HorizontalOptions = "EndAndExpand" Margin="0,0,15,0">sehr</Label>
+                <Label HorizontalOptions ="Start">nein</Label>
+                <Label HorizontalOptions = "EndAndExpand" Margin="0,0,15,0">ja, sehr häufig</Label>
             </StackLayout>
             <Button Text="Zum Ergebnis" Clicked="Button_Clicked"/>
         </StackLayout>
