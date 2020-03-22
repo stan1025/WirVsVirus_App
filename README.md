@@ -43,9 +43,7 @@
  $ brew install fvcproductions
  ```
 
-  > now install npm and bower packages
+  > Setup smart phone 
+  https://docs.microsoft.com/de-de/xamarin/android/get-started/installation/set-up-device-for-development
 
- ```shell
- $ npm install
- $ bower install
- ```
+ 
