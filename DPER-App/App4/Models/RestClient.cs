@@ -102,7 +102,7 @@ namespace DPER_App.Models
         #region findingAPI
         public async Task<bool> NewFindingAvailable(Guid id, DateTime time)
         {
-            var uri = new Uri(Url + "/symptome/GetSymptomeTypes");
+            var uri = new Uri(Url + "/finding/newfindingavailable");
             var res = false;
 
             try
@@ -138,7 +138,7 @@ namespace DPER_App.Models
 
         public async Task<UserResponseDataSet> RequestFinding(Guid id, DateTime time)
         {
-            var uri = new Uri(Url + "/symptome/GetSymptomeTypes");
+            var uri = new Uri(Url + "/finding/requestfinding");
             UserResponseDataSet res = null;
 
             try
@@ -174,7 +174,7 @@ namespace DPER_App.Models
 
         public async Task<UserHistoryDataSet> RequestFindingHistory(Guid id)
         {
-            var uri = new Uri(Url + "/symptome/GetSymptomeTypes");
+            var uri = new Uri(Url + "/symptome/senddiseasedataset");
             UserHistoryDataSet res = null;
 
             try
