@@ -8,14 +8,14 @@
     <ContentPage.Content>
         <StackLayout>
             <Label Text="Haben Sie heute Durchfall?"/>
-            <Slider Minimum="0" Maximum="100" Value="{Binding Diarrhea}"/>
+            <Slider  Maximum="{Binding Diarrhea.Max}" Minimum="{Binding Diarrhea.Min}" Value="{Binding Diarrhea.Value}"/>
             <Label Text="Haben Sie Halsschmerzen?"/>
-            <Slider Minimum="0" Maximum="100" Value="{Binding Sorethroat}"/>
-            <Label Text="Haben Sie heute Kopfschmerzen?"/>
-            <Slider Minimum="0" Maximum="100" Value="{Binding Headache}"/>           
+            <Slider Maximum="{Binding Sorethroat.Max}"  Minimum="{Binding Sorethroat.Min}"  Value="{Binding Sorethroat.Value}"/>
+           <Label Text="Haben Sie heute Kopfschmerzen?"/>
+            <Slider Maximum="{Binding Headache.Max}" Minimum="{Binding Headache.Min}"  Value="{Binding Headache.Value}"/>           
             <Label Text="Haben Sie heute Atmenot?"/>
-            <Slider Minimum="0" Maximum="100" Value="{Binding OutOfBreath}"/>
-            <Button Text="Zum Ergebnis" Command="{Binding FinishCommand}"/>
+            <Slider Maximum="{Binding OutOfBreath.Max}" Minimum="{Binding OutOfBreath.Min}"  Value="{Binding OutOfBreath.Value}"/>
+           <Button Text="Zum Ergebnis" Command="{Binding FinishCommand}"/>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

@@ -8,12 +8,15 @@
     <ContentPage.Content>
         <StackLayout>
             <Label Text="Haben Sie heute Gliederschmerzen?"/>
-            <Slider Minimum="0"  Maximum="100"   Value="{Binding Aches}" />
-            <Label Text="Haben Sie heute Hustet?"/>
-            <Slider Minimum="0"    Maximum="100"  Value="{Binding Cough}"  />
+            <Slider Maximum="{Binding Aches.Max}" Minimum="{Binding Aches.Min}"     Value="{Binding Aches.Value}" />
+            <Label Text="Haben Sie heute Husten?"/>
+            <Slider  Maximum="{Binding Cough.Max}" Minimum="{Binding Cough.Min}"     Value="{Binding Cough.Value}"  />
             <Label Text="Haben Sie Schnupfen?"/>
-            <Slider Minimum="0"  Maximum="100"   Value="{Binding Sniff}"   />
+            <Slider Maximum="{Binding Sniff.Max}" Minimum="{Binding Sniff.Min}"   Value="{Binding Sniff.Value}"   />
+            <Label Text="Ist ihnen übel?"/>
+            <Slider Maximum="{Binding Nausea.Max}" Minimum="{Binding Nausea.Min}" Value="{Binding Nausea.Value}"/>
             <Button Text="Weiter" Clicked="Button_Clicked"/>
+            
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

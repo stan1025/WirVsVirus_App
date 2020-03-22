@@ -19,9 +19,9 @@
           
             <!--<Label Text="{Binding FeverValue}"/>-->
             <Label Text="Haben Sie Schüttelfrost"/>
-            <Slider Minimum="0" Maximum="100"  Value="{Binding Frost}" />
+            <Slider Maximum="{Binding Frost.Max}" Minimum="{Binding Frost.Min}"  Value="{Binding Frost.Value}" />
             <Label Text="Fühlen Sie sich schlapp?"/>
-            <Slider Minimum="0"   Maximum="100"  Value="{Binding Limp}"/>
+            <Slider  Maximum="{Binding Limp.Max}" Minimum="{Binding Limp.Min}"   Value="{Binding Limp.Value}"/>
             <Button Clicked="Button_Clicked" Text="Weiter"/> 
         </StackLayout>
   </ContentPage.Content>

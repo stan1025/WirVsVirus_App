@@ -116,7 +116,7 @@ namespace vdivsvirus.Types
         public string desc { get; set; }
 
         /// <summary>
-        /// Symptome Input Settings 
+        /// Symptome Input Settings //Min;Max;Steplength
         /// </summary>
         public string settings { get; set; }
     }
