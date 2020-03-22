@@ -249,7 +249,7 @@ namespace DPER_App.ViewModel
                 data.symptomes.Add(new SymptomeInputData() { id = Frost.ID, strength = Frost.Value });
                 data.symptomes.Add(new SymptomeInputData() { id = Nausea.ID, strength = Nausea.Value });
                 data.symptomes.Add(new SymptomeInputData() { id = Sniff.ID, strength = Sniff.Value });
-                itfSymptome.SendSymptomeDataSetAsync(data);
+                await itfSymptome.SendSymptomeDataSetAsync(data);
             }
             catch (Exception ex)
             {

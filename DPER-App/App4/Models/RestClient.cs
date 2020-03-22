@@ -107,21 +107,11 @@ namespace DPER_App.Models
 
             try
             {
-                JArray array = new JArray();
-                array.Add(id);
-                array.Add(time);
+                var json = JsonConvert.SerializeObject(new UserDataRef() {userID = id, time = time });
+                var requ = new StringContent(json, Encoding.UTF8, "application/json");
 
-                JObject o = new JObject(array);
-
-                string json = o.ToString();
-                var request = new HttpRequestMessage
-                {
-                    Method = HttpMethod.Get,
-                    RequestUri = uri,
-                    Content = new StringContent(json, Encoding.UTF8, "application/json"),
-                };
-
-                var response = await _client.SendAsync(request).ConfigureAwait(false); ;
+                HttpResponseMessage response = null;
+                response = await _client.PostAsync(uri, requ);
                 if (response.IsSuccessStatusCode)
                 {
                     var content = await response.Content.ReadAsStringAsync();
@@ -143,21 +133,11 @@ namespace DPER_App.Models
 
             try
             {
-                JArray array = new JArray();
-                array.Add(id);
-                array.Add(time);
+                var json = JsonConvert.SerializeObject(new UserDataRef() { userID = id, time = time });
+                var requ = new StringContent(json, Encoding.UTF8, "application/json");
 
-                JObject o = new JObject(array);
-
-                string json = o.ToString();
-                var request = new HttpRequestMessage
-                {
-                    Method = HttpMethod.Get,
-                    RequestUri = uri,
-                    Content = new StringContent(json, Encoding.UTF8, "application/json"),
-                };
-
-                var response = await _client.SendAsync(request).ConfigureAwait(false); ;
+                HttpResponseMessage response = null;
+                response = await _client.PostAsync(uri, requ);
                 if (response.IsSuccessStatusCode)
                 {
                     var content = await response.Content.ReadAsStringAsync();
