@@ -1,5 +1,4 @@
-﻿using DPER_App.ViewModel;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -11,26 +10,18 @@ using Xamarin.Forms.Xaml;
 namespace DPER_App.View
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class Symptome1 : ContentPage
+    public partial class Startpage : ContentPage
     {
-        SymptomsViewModel vm;
-        public Symptome1(SymptomsViewModel _vm)
+        public Startpage()
         {
             InitializeComponent();
-            this.vm = _vm;
-            this.BindingContext =vm ;
         }
 
         async void Button_Clicked(object sender, EventArgs e)
         {
-            var detailPage = new Symptoms2(vm);
+            var detailPage = new ContactPersonsPage();
 
             await Navigation.PushModalAsync(detailPage);
-        }
-
-        private void Trigger_PropertyChanging(object sender, PropertyChangingEventArgs e)
-        {
-
         }
     }
 }

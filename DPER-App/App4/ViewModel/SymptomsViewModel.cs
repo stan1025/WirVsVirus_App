@@ -23,6 +23,36 @@ namespace DPER_App.ViewModel
         }
 
         #region Symptoms
+
+        private int _contactIndex;
+        public int ContactIndex
+        {
+            get {
+                
+                if (Contact = true)
+                {
+                    _contactIndex = 0;
+                }
+                else
+                {
+                    _contactIndex = 1;
+                }
+                return _contactIndex;
+            } 
+            set
+            {
+                _contactIndex = value;
+                if (ContactIndex == 0)
+                {
+                    Contact = true;
+                }
+                else
+                {
+                    Contact = false;
+                }
+            }
+        }
+
         private bool _contact;
         public bool Contact
         {
@@ -98,9 +128,7 @@ namespace DPER_App.ViewModel
 
             try
             {
-                Debug.WriteLine(FeverValue.ToString());
-                Debug.WriteLine(Headache);
-                Debug.WriteLine(Limp);
+                
             }
             catch (Exception ex)
             {
@@ -111,7 +139,6 @@ namespace DPER_App.ViewModel
                 IsBusy = false;
             }
         }
-
-
+        
     }
 }

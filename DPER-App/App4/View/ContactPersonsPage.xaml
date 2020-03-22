@@ -9,10 +9,12 @@
   <ContentPage.Content>
       <StackLayout>
           <Label Text="Hatten Sie engen Kontakt zu einem Verdachtsfall" />
-            <syncfusion:SfRadioGroup x:Name="radioGroup" >
-                <syncfusion:SfRadioButton x:Name="Yes" Text="Ja" />
-                <syncfusion:SfRadioButton x:Name="No" Text="Nein"/>
-            </syncfusion:SfRadioGroup>
+            <Picker SelectedIndex="{Binding ContactIndex}">
+                <Picker.Items>
+                    <x:String>Ja</x:String>
+                    <x:String>Nein</x:String>
+                </Picker.Items>
+            </Picker>
             <Button Text="Weiter" Clicked="Button_Clicked" ></Button>
       </StackLayout>
   </ContentPage.Content>

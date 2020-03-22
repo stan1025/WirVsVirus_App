@@ -11,7 +11,13 @@
       <StackLayout>
           <Label Text="Wie ist Ihre Temperatur" />
             <!-- Wenn Min > default Max (1), muss maxvalue zuerst angegeben werden -->
-            <Slider Maximum="42.5" Minimum="35.8" Value="{Binding FeverValue}" />                 
+            <Slider Maximum="42.5" Minimum="35.8" Value="{Binding FeverValue}">
+                <!--<Slider.Triggers>
+                    <Trigger PropertyChanging="Trigger_PropertyChanging" />
+                </Slider.Triggers>-->
+            </Slider>
+          
+            <!--<Label Text="{Binding FeverValue}"/>-->
             <Label Text="Haben Sie Schüttelfrost"/>
             <Slider Minimum="0" Maximum="100"  Value="{Binding Frost}" />
             <Label Text="Fühlen Sie sich schlapp?"/>

@@ -12,7 +12,7 @@ namespace DPER_App
         public App()
         {
             InitializeComponent();
-            MainPage = new ContactPersonsPage();
+            MainPage = new Startpage();
         }
 
         protected override void OnStart()
