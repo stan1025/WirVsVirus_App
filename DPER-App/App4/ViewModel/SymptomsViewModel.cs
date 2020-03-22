@@ -175,6 +175,7 @@ namespace DPER_App.ViewModel
             set
             {
                 _feverString = value;
+                this.OnPropertyChanged(nameof(FeverString));
             }
         }
 

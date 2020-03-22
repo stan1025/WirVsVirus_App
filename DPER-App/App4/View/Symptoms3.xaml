@@ -7,7 +7,7 @@
              x:Class="DPER_App.View.Symptoms3">
     <ContentPage.Content>
         <StackLayout>
-            <Label Text="Haben Sie heute Durchfall?"/>
+            <Label Text="Haben Sie Durchfall?"/>
             <Slider  Maximum="{Binding Diarrhea.Max}" Minimum="{Binding Diarrhea.Min}" Value="{Binding Diarrhea.Value}"/>
             <StackLayout Orientation="Horizontal" >
                 <Label HorizontalOptions ="Start">gar nicht</Label>
@@ -21,14 +21,14 @@
                 <Label HorizontalOptions ="Start">gar nicht</Label>
                 <Label HorizontalOptions = "EndAndExpand" Margin="0,0,15,0">sehr stark</Label>
             </StackLayout>
-            <Label Text="Haben Sie heute Kopfschmerzen?"/>
+            <Label Text="Haben Sie Kopfschmerzen?"/>
             
             <Slider Maximum="{Binding Headache.Max}" Minimum="{Binding Headache.Min}"  Value="{Binding Headache.Value}"/>
             <StackLayout Orientation="Horizontal" >
                 <Label HorizontalOptions ="Start">gar nicht</Label>
                 <Label HorizontalOptions = "EndAndExpand" Margin="0,0,15,0">sehr stark</Label>
             </StackLayout>
-            <Label Text="Haben Sie heute Atmenot?"/>
+            <Label Text="Haben Sie Atmenot?"/>
             
             <Slider Maximum="{Binding OutOfBreath.Max}" Minimum="{Binding OutOfBreath.Min}"  Value="{Binding OutOfBreath.Value}"/>
             <StackLayout Orientation="Horizontal" >

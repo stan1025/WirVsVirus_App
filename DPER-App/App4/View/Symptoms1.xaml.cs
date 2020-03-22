@@ -28,9 +28,11 @@ namespace DPER_App.View
             await Navigation.PushModalAsync(detailPage);
         }
 
-        private void Trigger_PropertyChanging(object sender, PropertyChangingEventArgs e)
-        {
+       
 
+        private void Slider_ValueChanged(object sender, ValueChangedEventArgs e)
+        {           
+                vm.FeverString = vm.Fever.Value.ToString();               
         }
     }
 }
