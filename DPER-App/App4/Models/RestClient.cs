@@ -15,6 +15,7 @@ namespace DPER_App.Models
     {
         HttpClient _client;
         const string Url = "http://dper-net.us-east-1.elasticbeanstalk.com/api";
+        //const string Url = "http://172.25.130.146:5000/api";
 
         public RestClient()
         {
@@ -22,7 +23,7 @@ namespace DPER_App.Models
         }
 
         #region symptomeAPI
-        public async Task<List<SymptomeIdentData>> GetSymptomesAsync()
+        public List<SymptomeIdentData> GetSymptomes()
         {
             var uri = new Uri(Url+ "/symptome/GetSymptomeTypes");
             var Items = new List<SymptomeIdentData>();
@@ -44,7 +45,7 @@ namespace DPER_App.Models
             return Items;
         }
 
-        public async Task SendSymptomeDataSetAsync(SymptomeInputDataSet symptomes)
+        public void SendSymptomeDataSet(SymptomeInputDataSet symptomes)
         {
             var uri = new Uri(Url + "/symptome/SendSymptomeDataSet");
 
@@ -54,7 +55,7 @@ namespace DPER_App.Models
                 var content = new StringContent(json, Encoding.UTF8, "application/json");
 
                 HttpResponseMessage response = null;
-                response = await _client.PostAsync(uri, content);
+                response = _client.PostAsync(uri, content).Result;
                 
                 if (response.IsSuccessStatusCode)
                 {
@@ -68,7 +69,7 @@ namespace DPER_App.Models
             }
         }
 
-        public async Task SendDiseaseDataSetAsync(Guid userId, DiseaseAcknowledgeSet disease)
+        public void SendDiseaseDataSet(Guid userId, DiseaseAcknowledgeSet disease)
         {
             var uri = new Uri(Url + "/symptome/SendDiseaseDataSet");
 
@@ -84,7 +85,7 @@ namespace DPER_App.Models
                 var content = new StringContent(json, Encoding.UTF8, "application/json");
 
                 HttpResponseMessage response = null;
-                response = await _client.PostAsync(uri, content);
+                response = _client.PostAsync(uri, content).Result;
 
                 if (response.IsSuccessStatusCode)
                 {
@@ -100,7 +101,7 @@ namespace DPER_App.Models
         #endregion
 
         #region findingAPI
-        public async Task<bool> NewFindingAvailable(Guid id, DateTime time)
+        public bool NewFindingAvailable(Guid id, DateTime time)
         {
             var uri = new Uri(Url + "/finding/newfindingavailable");
             var res = false;
@@ -111,10 +112,10 @@ namespace DPER_App.Models
                 var requ = new StringContent(json, Encoding.UTF8, "application/json");
 
                 HttpResponseMessage response = null;
-                response = await _client.PostAsync(uri, requ);
+                response = _client.PostAsync(uri, requ).Result;
                 if (response.IsSuccessStatusCode)
                 {
-                    var content = await response.Content.ReadAsStringAsync();
+                    var content = response.Content.ReadAsStringAsync().Result;
                     res = JsonConvert.DeserializeObject<bool>(content);
                 }
             }
@@ -126,7 +127,7 @@ namespace DPER_App.Models
             return res;
         }
 
-        public async Task<UserResponseDataSet> RequestFinding(Guid id, DateTime time)
+        public UserResponseDataSet RequestFinding(Guid id, DateTime time)
         {
             var uri = new Uri(Url + "/finding/requestfinding");
             UserResponseDataSet res = null;
@@ -137,10 +138,10 @@ namespace DPER_App.Models
                 var requ = new StringContent(json, Encoding.UTF8, "application/json");
 
                 HttpResponseMessage response = null;
-                response = await _client.PostAsync(uri, requ);
+                response = _client.PostAsync(uri, requ).Result;
                 if (response.IsSuccessStatusCode)
                 {
-                    var content = await response.Content.ReadAsStringAsync();
+                    var content = response.Content.ReadAsStringAsync().Result;
                     res = JsonConvert.DeserializeObject<UserResponseDataSet>(content);
                 }
             }
@@ -152,7 +153,7 @@ namespace DPER_App.Models
             return res;
         }
 
-        public async Task<UserHistoryDataSet> RequestFindingHistory(Guid id)
+        public UserHistoryDataSet RequestFindingHistory(Guid id)
         {
             var uri = new Uri(Url + "/finding/RequestFindingHistory");
             UserHistoryDataSet res = null;
@@ -169,10 +170,10 @@ namespace DPER_App.Models
                     Content = new StringContent(json, Encoding.UTF8, "application/json"),
                 };
 
-                var response = await _client.SendAsync(request).ConfigureAwait(false); ;
+                var response = _client.SendAsync(request).Result; ;
                 if (response.IsSuccessStatusCode)
                 {
-                    var content = await response.Content.ReadAsStringAsync();
+                    var content = response.Content.ReadAsStringAsync().Result;
                     res = JsonConvert.DeserializeObject<UserHistoryDataSet>(content);
                 }
             }

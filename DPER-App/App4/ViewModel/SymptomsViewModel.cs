@@ -34,8 +34,8 @@ namespace DPER_App.ViewModel
 
             
                         itfSymptome = new RestClient();
-            //List<SymptomeIdentData> ItemsList = itfSymptome.GetSymptomesAsync().Result;
-            List<SymptomeIdentData> ItemsList = dummyData();
+            List<SymptomeIdentData> ItemsList = itfSymptome.GetSymptomes();
+            //List<SymptomeIdentData> ItemsList = dummyData();
 
 
             //initialize Symptoms
@@ -287,10 +287,11 @@ namespace DPER_App.ViewModel
 
             try
             {
-                SymptomeInputDataSet data = new SymptomeInputDataSet();
-                data.time = DateTime.Now;
-                Application.Current.Properties["lastEntry"] = data.time;
+                SymptomeInputDataSet data = new SymptomeInputDataSet();                
+                Application.Current.Properties["lastEntry"] = DateTime.Now.ToString();
+                data.time = DateTime.Parse(Application.Current.Properties["lastEntry"].ToString());
                 data.userID = userId;
+                data.geodata = new List<GeoData>();
                 data.symptomes = new List<SymptomeInputData>();
                 data.symptomes.Add(new SymptomeInputData() { id = Fever.ID, strength = Fever.Value });
                 data.symptomes.Add(new SymptomeInputData() { id = Diarrhea.ID, strength = Diarrhea.Value });
@@ -303,7 +304,7 @@ namespace DPER_App.ViewModel
                 data.symptomes.Add(new SymptomeInputData() { id = Frost.ID, strength = Frost.Value });
                 data.symptomes.Add(new SymptomeInputData() { id = Nausea.ID, strength = Nausea.Value });
                 data.symptomes.Add(new SymptomeInputData() { id = Sniff.ID, strength = Sniff.Value });
-                await itfSymptome.SendSymptomeDataSetAsync(data);
+                itfSymptome.SendSymptomeDataSet(data);
             }
             catch (Exception ex)
             {
