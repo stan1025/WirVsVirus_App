@@ -22,10 +22,10 @@ namespace DPER_App.Models
         }
 
         #region symptomeAPI
-        public async Task<List<SymptomeDisplayData>> GetSymptomesAsync()
+        public async Task<List<SymptomeIdentData>> GetSymptomesAsync()
         {
             var uri = new Uri(Url+ "/symptome/GetSymptomeTypes");
-            var Items = new List<SymptomeDisplayData>();
+            var Items = new List<SymptomeIdentData>();
 
             try
             {
@@ -33,7 +33,7 @@ namespace DPER_App.Models
                 if (response.IsSuccessStatusCode)
                 {
                     var content = await response.Content.ReadAsStringAsync();
-                    Items = JsonConvert.DeserializeObject<List<SymptomeDisplayData>>(content);
+                    Items = JsonConvert.DeserializeObject<List<SymptomeIdentData>>(content);
                 }
             }
             catch (Exception ex)

@@ -8,7 +8,7 @@ namespace DPER_App.Services
 {
     interface IBackendSymptome
     {
-        Task<List<SymptomeDisplayData>> GetSymptomesAsync();
+        Task<List<SymptomeIdentData>> GetSymptomesAsync();
 
         Task SendSymptomeDataSetAsync(SymptomeInputDataSet symptomes);
 
