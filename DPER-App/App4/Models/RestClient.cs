@@ -174,7 +174,7 @@ namespace DPER_App.Models
 
         public async Task<UserHistoryDataSet> RequestFindingHistory(Guid id)
         {
-            var uri = new Uri(Url + "/symptome/senddiseasedataset");
+            var uri = new Uri(Url + "/finding/RequestFindingHistory");
             UserHistoryDataSet res = null;
 
             try
