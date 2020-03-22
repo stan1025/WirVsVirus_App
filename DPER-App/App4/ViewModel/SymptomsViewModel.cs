@@ -11,6 +11,7 @@ using System.Diagnostics;
 using vdivsvirus.Types;
 using DPER_App.Services;
 using DPER_App.Models;
+using System.Text.RegularExpressions;
 
 namespace DPER_App.ViewModel
 {
@@ -28,8 +29,8 @@ namespace DPER_App.ViewModel
 
             FinishCommand = new Command(async () => await ExecuteFinishCommand());
                         itfSymptome = new RestClient();
-            List<SymptomeIdentData> ItemsList = itfSymptome.GetSymptomesAsync().Result;
-            //List<SymptomeIdentData> ItemsList = dummyData();
+          // List<SymptomeIdentData> ItemsList = itfSymptome.GetSymptomesAsync().Result;
+            List<SymptomeIdentData> ItemsList = dummyData();
 
             Fever = new Item<float>();
             Diarrhea = new Item<int>();
@@ -47,10 +48,32 @@ namespace DPER_App.ViewModel
 
             foreach (SymptomeIdentData item in ItemsList)
             {
-                int min = int.Parse(item.settings.Substring(4, item.settings.IndexOf(";")));
-                string feverSubString = item.settings.Substring(item.settings.IndexOf(";") + 1);
-                int max = int.Parse(feverSubString.Substring(4, feverSubString.IndexOf(";")));
+                int min = 0;
+                int max = 100;
+                if (!string.IsNullOrWhiteSpace(item.settings) & item.settings.Contains(";"))
+                {
+                   
+                    string input = item.settings;
+                    string pattern = @";";
 
+                    string[] splttingeResults = Regex.Split(input, pattern);
+
+                    foreach (string part in Regex.Split(input, pattern))
+                    {
+                        switch (part)
+                        {
+                            case "min":
+                            case "Min":
+                                min = int.Parse(part.Substring(part.IndexOf("=")));
+                                break;
+                            case "max":
+                            case "Max":
+                                max = int.Parse(part.Substring(part.IndexOf("=")));
+                                break;
+                            default: break;
+                        }
+                    }
+                }
                 switch (item.name)
                 {
                     case "Fieber":
@@ -142,7 +165,7 @@ namespace DPER_App.ViewModel
             set
             {
                 _contactIndex = value;
-                if (ContactIndex == 0)
+                if (_contactIndex == 0)
                 {
                     Contact = true;
                 }
@@ -275,17 +298,17 @@ namespace DPER_App.ViewModel
         {
 
             List<SymptomeIdentData> list = new List<SymptomeIdentData>();
-            list.Add(new SymptomeIdentData() { name = "Durchfall", settings = "0;100;1" });
-            list.Add(new SymptomeIdentData() { name = "Übelkeit", settings = "0;100;1" });
-            list.Add(new SymptomeIdentData() { name = "Fieber", settings = "35;45;1" });
-            list.Add(new SymptomeIdentData() { name = "Abgeschlagenheit", settings = "0;100;1" });
-            list.Add(new SymptomeIdentData() { name = "Husten", settings = "0;100;1" });
-            list.Add(new SymptomeIdentData() { name = "Kurzatmigkeit", settings = "0;100;1" });
-            list.Add(new SymptomeIdentData() { name = "Muskel-/Gelenkschmerz", settings = "35;45;1" });
-            list.Add(new SymptomeIdentData() { name = "Halsschmerz", settings = "0;100;1" });
-            list.Add(new SymptomeIdentData() { name = "Kopfschmerz", settings = "0;100;1" });
-            list.Add(new SymptomeIdentData() { name = "Schüttelfrost", settings = "0;100;1" });
-            list.Add(new SymptomeIdentData() { name = "Verstopfte Nase", settings = "0;100;1" });
+            list.Add(new SymptomeIdentData() { name = "Durchfall", settings = "Min=0;Max=100;step=1" });
+            list.Add(new SymptomeIdentData() { name = "Übelkeit", settings = "min=0;max=100;step=1" });
+            list.Add(new SymptomeIdentData() { name = "Fieber", settings = "min=35;max=45;step=1" });
+            list.Add(new SymptomeIdentData() { name = "Abgeschlagenheit", settings = "min=0;max=100;step=1" });
+            list.Add(new SymptomeIdentData() { name = "Husten", settings = "min=0;max=100;step=1" });
+            list.Add(new SymptomeIdentData() { name = "Kurzatmigkeit", settings = "min=0;max=100;step=1" });
+            list.Add(new SymptomeIdentData() { name = "Muskel-/Gelenkschmerz", settings = "min=35;max=45;step=1" });
+            list.Add(new SymptomeIdentData() { name = "Halsschmerz", settings = "min=0;max=100;step01" });
+            list.Add(new SymptomeIdentData() { name = "Kopfschmerz", settings = "min=0;max=100;step=1" });
+            list.Add(new SymptomeIdentData() { name = "Schüttelfrost", settings = "Min=0;max=100;step=1" });
+            list.Add(new SymptomeIdentData() { name = "Verstopfte Nase", settings = "min=0;Max=100;tep=1" });
             return list;
         }
     }
