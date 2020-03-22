@@ -8,10 +8,10 @@ namespace DPER_App.Services
 {
     public interface IBackendFinding
     {
-        Task<bool> NewFindingAvailable(Guid id, DateTime time);
+        bool NewFindingAvailable(Guid id, DateTime time);
 
-        Task<UserResponseDataSet> RequestFinding(Guid id, DateTime time);
+        UserResponseDataSet RequestFinding(Guid id, DateTime time);
 
-        Task<UserHistoryDataSet> RequestFindingHistory(Guid id);
+        UserHistoryDataSet RequestFindingHistory(Guid id);
     }
 }

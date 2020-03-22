@@ -23,10 +23,16 @@ namespace DPER_App.ViewModel
             {
                 Guid userId = Guid.Parse(Application.Current.Properties["userId"].ToString());
                 DateTime lastEntry = DateTime.Parse(Application.Current.Properties["lastEntry"].ToString());
-                while (!(itfFinding.NewFindingAvailable(userId, lastEntry).Result))
-                    System.Threading.Thread.Sleep(1500);
-                UserResponseDataSet response = itfFinding.RequestFinding(userId, lastEntry).Result;
-                ResultMessage = response.message;
+                while (!(itfFinding.NewFindingAvailable(userId, lastEntry)))
+                    System.Threading.Thread.Sleep(500);
+                UserResponseDataSet response = itfFinding.RequestFinding(userId, lastEntry);
+                int prob = 0; ;
+                foreach (DiseaseData item in response.propabilities)
+                {
+                    if (item.propability > prob)
+                        prob = (int)(item.propability);
+                }
+                ResultMessage = "Sie haben zu " + prob.ToString() + "% Corona";
             }
 
         }

@@ -34,7 +34,7 @@ namespace DPER_App.ViewModel
 
             
                         itfSymptome = new RestClient();
-            List<SymptomeIdentData> ItemsList = itfSymptome.GetSymptomesAsync().Result;
+            List<SymptomeIdentData> ItemsList = itfSymptome.GetSymptomes();
             //List<SymptomeIdentData> ItemsList = dummyData();
 
 
@@ -304,7 +304,7 @@ namespace DPER_App.ViewModel
                 data.symptomes.Add(new SymptomeInputData() { id = Frost.ID, strength = Frost.Value });
                 data.symptomes.Add(new SymptomeInputData() { id = Nausea.ID, strength = Nausea.Value });
                 data.symptomes.Add(new SymptomeInputData() { id = Sniff.ID, strength = Sniff.Value });
-                await itfSymptome.SendSymptomeDataSetAsync(data);
+                itfSymptome.SendSymptomeDataSet(data);
             }
             catch (Exception ex)
             {
