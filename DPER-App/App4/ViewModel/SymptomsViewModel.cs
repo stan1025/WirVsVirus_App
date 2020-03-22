@@ -60,15 +60,16 @@ namespace DPER_App.ViewModel
 
                     foreach (string part in Regex.Split(input, pattern))
                     {
-                        switch (part)
+                        string test = part.Substring(part.IndexOf("=")+1);
+                        switch (part.Substring(0,part.IndexOf("=")))
                         {
                             case "min":
                             case "Min":
-                                min = int.Parse(part.Substring(part.IndexOf("=")));
+                                min = int.Parse(part.Substring(part.IndexOf("=")+1));
                                 break;
                             case "max":
                             case "Max":
-                                max = int.Parse(part.Substring(part.IndexOf("=")));
+                                max = int.Parse(part.Substring(part.IndexOf("=")+1));
                                 break;
                             default: break;
                         }
@@ -305,7 +306,7 @@ namespace DPER_App.ViewModel
             list.Add(new SymptomeIdentData() { name = "Husten", settings = "min=0;max=100;step=1" });
             list.Add(new SymptomeIdentData() { name = "Kurzatmigkeit", settings = "min=0;max=100;step=1" });
             list.Add(new SymptomeIdentData() { name = "Muskel-/Gelenkschmerz", settings = "min=35;max=45;step=1" });
-            list.Add(new SymptomeIdentData() { name = "Halsschmerz", settings = "min=0;max=100;step01" });
+            list.Add(new SymptomeIdentData() { name = "Halsschmerz", settings = "min=0;max=100;step=1" });
             list.Add(new SymptomeIdentData() { name = "Kopfschmerz", settings = "min=0;max=100;step=1" });
             list.Add(new SymptomeIdentData() { name = "Schüttelfrost", settings = "Min=0;max=100;step=1" });
             list.Add(new SymptomeIdentData() { name = "Verstopfte Nase", settings = "min=0;Max=100;tep=1" });
