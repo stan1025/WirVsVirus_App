@@ -24,6 +24,7 @@ namespace DPER_App.View
         async void Button_Clicked(object sender, EventArgs e)
         {
             await vm.ExecuteFinishCommand();
+            ResultViewModel vm_result = new ResultViewModel();
             var detailPage = new ResultPage();
             await Navigation.PushModalAsync(detailPage);
 
