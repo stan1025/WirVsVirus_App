@@ -13,13 +13,20 @@ namespace DPER_App.View
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class Symptoms3 : ContentPage
     {
-      
-        public Symptoms3(SymptomsViewModel vm)
+        SymptomsViewModel vm;
+        public Symptoms3(SymptomsViewModel _vm)
         {
-            InitializeComponent();            
+            InitializeComponent();
+            vm = _vm;
             this.BindingContext = vm;
         }
 
-      
+        async void Button_Clicked(object sender, EventArgs e)
+        {
+            await vm.ExecuteFinishCommand();
+            var detailPage = new ResultPage();
+            await Navigation.PushModalAsync(detailPage);
+
+        }
     }
 }

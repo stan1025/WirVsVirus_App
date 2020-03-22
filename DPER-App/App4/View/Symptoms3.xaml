@@ -15,7 +15,7 @@
             <Slider Maximum="{Binding Headache.Max}" Minimum="{Binding Headache.Min}"  Value="{Binding Headache.Value}"/>           
             <Label Text="Haben Sie heute Atmenot?"/>
             <Slider Maximum="{Binding OutOfBreath.Max}" Minimum="{Binding OutOfBreath.Min}"  Value="{Binding OutOfBreath.Value}"/>
-           <Button Text="Zum Ergebnis" Command="{Binding FinishCommand}"/>
+           <Button Text="Zum Ergebnis" Clicked="Button_Clicked"/>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

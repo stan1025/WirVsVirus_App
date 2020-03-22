@@ -222,7 +222,7 @@ namespace DPER_App.ViewModel
         }
         #endregion
 
-        async Task ExecuteFinishCommand()
+        public async Task ExecuteFinishCommand()
         {
             IsBusy = true;
 
