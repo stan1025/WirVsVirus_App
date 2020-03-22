@@ -19,9 +19,11 @@ namespace DPER_App.View
             this.BindingContext = vm;
         }
 
-        private void Button_Clicked(object sender, EventArgs e)
+        async void Button_Clicked(object sender, EventArgs e)
         {
+            var detailPage = new Startpage();
 
+            await Navigation.PushModalAsync(detailPage);
         }
     }
 }
