@@ -12,16 +12,27 @@
           <Label Text="Wie ist Ihre Temperatur" />
             <!-- Wenn Min > default Max (1), muss maxvalue zuerst angegeben werden -->
             <Slider Maximum="{Binding Fever.Max}" Minimum="{Binding Fever.Min}" Value="{Binding Fever.Value}">
-                <!--<Slider.Triggers>
-                    <Trigger PropertyChanging="Trigger_PropertyChanging" />
-                </Slider.Triggers>-->
+                <Slider.Triggers>
+                    <Trigger TargetType="Slider" Property="Value">
+                        
+                    </Trigger> 
+                   
+                </Slider.Triggers>
             </Slider>
           
-            <!--<Label Text="{Binding FeverValue}"/>-->
-            <Label Text="Haben Sie Schüttelfrost"/>
+            <Label Text="{Binding FeverString}" />
+                <Label Text="Haben Sie Schüttelfrost"/>
             <Slider Maximum="{Binding Frost.Max}" Minimum="{Binding Frost.Min}"  Value="{Binding Frost.Value}" />
+            <StackLayout Orientation="Horizontal" >
+                <Label HorizontalOptions ="Start">gar nicht</Label>
+                <Label HorizontalOptions = "EndAndExpand" Margin="0,0,15,0">sehr stark</Label>
+            </StackLayout>
             <Label Text="Fühlen Sie sich schlapp?"/>
             <Slider  Maximum="{Binding Limp.Max}" Minimum="{Binding Limp.Min}"   Value="{Binding Limp.Value}"/>
+            <StackLayout Orientation="Horizontal" >
+                <Label HorizontalOptions ="Start">gar nicht</Label>
+                <Label HorizontalOptions = "EndAndExpand" Margin="0,0,15,0">sehr</Label>
+            </StackLayout>
             <Button Clicked="Button_Clicked" Text="Weiter"/> 
         </StackLayout>
   </ContentPage.Content>

@@ -25,7 +25,7 @@ namespace DPER_App.View
         {
             await vm.ExecuteFinishCommand();
             ResultViewModel vm_result = new ResultViewModel();
-            var detailPage = new ResultPage();
+            var detailPage = new ResultPage(vm_result);
             await Navigation.PushModalAsync(detailPage);
 
         }

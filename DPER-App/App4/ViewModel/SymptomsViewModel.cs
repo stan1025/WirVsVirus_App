@@ -20,8 +20,8 @@ namespace DPER_App.ViewModel
         private IBackendSymptome itfSymptome;
 
         private static Guid userId;
-
-        public Command FinishCommand { get; set; }
+      
+       
         public SymptomsViewModel()
         {
             if (Application.Current.Properties.ContainsKey("userId"))
@@ -32,11 +32,13 @@ namespace DPER_App.ViewModel
                 Application.Current.Properties["userId"] = userId;
             }
 
-            FinishCommand = new Command(async () => await ExecuteFinishCommand());
+            
                         itfSymptome = new RestClient();
-            List<SymptomeIdentData> ItemsList = itfSymptome.GetSymptomesAsync().Result;
-          //  List<SymptomeIdentData> ItemsList = dummyData();
+            //List<SymptomeIdentData> ItemsList = itfSymptome.GetSymptomesAsync().Result;
+            List<SymptomeIdentData> ItemsList = dummyData();
 
+
+            //initialize Symptoms
             Fever = new Item<float>();
             Diarrhea = new Item<int>();
             Cough = new Item<int>();
@@ -50,7 +52,7 @@ namespace DPER_App.ViewModel
             Sniff = new Item<int>();
 
 
-
+            //Match sympthoms with their backendnames
             foreach (SymptomeIdentData item in ItemsList)
             {
                 switch (item.name)
@@ -110,7 +112,9 @@ namespace DPER_App.ViewModel
         }
 
         #region Symptoms
-
+        /// <summary>
+        /// Pickerindex für Contacts
+        /// </summary>
         private int _contactIndex;
         public int ContactIndex
         {
@@ -149,19 +153,43 @@ namespace DPER_App.ViewModel
         }
 
         private Item<float> _feverValue;
+       
         public Item<float> Fever
         {
-            get => _feverValue;
-            set { _feverValue = value; }
+            get { return _feverValue; }
+            set
+            {
+                _feverValue = value;
+                _feverString = _feverValue.Value.ToString();
+
+            }
         }
 
+        /// <summary>
+        /// Fieber
+        /// </summary>
+        private string _feverString;
+        public string FeverString
+        {
+            get => _feverString;
+            set
+            {
+                _feverString = value;
+            }
+        }
+
+        /// <summary>
+        /// Schüttelfrost
+        /// </summary>
         private Item<int> _frost;
         public Item<int> Frost
         {
             get => _frost;
             set { _frost = value; }
         }
-
+        /// <summary>
+        /// Abgeschlagenheit
+        /// </summary>
         private Item<int> _limp;
         public Item<int> Limp
         {
@@ -169,7 +197,9 @@ namespace DPER_App.ViewModel
             set { _limp = value; }
         }
 
-
+        /// <summary>
+        /// Muskel und Gliederschmerzen
+        /// </summary>
         private Item<int> _aches;
         public Item<int> Aches
         {
@@ -177,6 +207,9 @@ namespace DPER_App.ViewModel
             set { _aches = value; }
         }
 
+        /// <summary>
+        /// Husten
+        /// </summary>
         private Item<int> _cough;
         public Item<int> Cough
         {
@@ -184,6 +217,9 @@ namespace DPER_App.ViewModel
             set { _cough = value; }
         }
 
+        /// <summary>
+        /// Schnupfen/ verstopfte Nase
+        /// </summary>
         private Item<int> _sniff;
         public Item<int> Sniff
         {
@@ -191,12 +227,19 @@ namespace DPER_App.ViewModel
             set { _sniff = value; }
         }
 
+        /// <summary>
+        /// Durchfall
+        /// </summary>
         private Item<int> _diarrhea;
         public Item<int> Diarrhea
         {
             get => _diarrhea;
             set { _diarrhea = value; }
         }
+
+        /// <summary>
+        /// Halsschmerzen
+        /// </summary>
 
         private Item<int> _sorethroat;
         public Item<int> Sorethroat
@@ -205,6 +248,9 @@ namespace DPER_App.ViewModel
             set { _sorethroat = value; }
         }
 
+        /// <summary>
+        /// Kopfschmerzen
+        /// </summary>
         private Item<int> _headache;
         public Item<int> Headache
         {
@@ -212,6 +258,10 @@ namespace DPER_App.ViewModel
             set { _headache = value; }
         }
 
+
+        /// <summary>
+        /// Kurzatmigkeit/ Atemnot
+        /// </summary>
         private Item<int> _outOfBreath;
         public Item<int> OutOfBreath
         {
@@ -219,6 +269,9 @@ namespace DPER_App.ViewModel
             set { _outOfBreath = value; }
         }
 
+        /// <summary>
+        /// Übelkeit
+        /// </summary>
         private Item<int> _nausea;
         public Item<int> Nausea
         {

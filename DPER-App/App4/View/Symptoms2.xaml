@@ -9,12 +9,28 @@
         <StackLayout>
             <Label Text="Haben Sie heute Gliederschmerzen?"/>
             <Slider Maximum="{Binding Aches.Max}" Minimum="{Binding Aches.Min}"     Value="{Binding Aches.Value}" />
+            <StackLayout Orientation="Horizontal" >
+                <Label HorizontalOptions ="Start">gar nicht</Label>
+                <Label HorizontalOptions = "EndAndExpand" Margin="0,0,15,0">sehr stark</Label>
+            </StackLayout>
             <Label Text="Haben Sie heute Husten?"/>
             <Slider  Maximum="{Binding Cough.Max}" Minimum="{Binding Cough.Min}"     Value="{Binding Cough.Value}"  />
+            <StackLayout Orientation="Horizontal" >
+                <Label HorizontalOptions ="Start">gar nicht</Label>
+                <Label HorizontalOptions = "EndAndExpand" Margin="0,0,15,0">sehr stark</Label>
+            </StackLayout>
             <Label Text="Haben Sie Schnupfen?"/>
             <Slider Maximum="{Binding Sniff.Max}" Minimum="{Binding Sniff.Min}"   Value="{Binding Sniff.Value}"   />
+            <StackLayout Orientation="Horizontal" >
+                <Label HorizontalOptions ="Start">gar nicht</Label>
+                <Label HorizontalOptions = "EndAndExpand" Margin="0,0,15,0">sehr stark</Label>
+            </StackLayout>
             <Label Text="Ist ihnen übel?"/>
             <Slider Maximum="{Binding Nausea.Max}" Minimum="{Binding Nausea.Min}" Value="{Binding Nausea.Value}"/>
+            <StackLayout Orientation="Horizontal" >
+                <Label HorizontalOptions ="Start">gar nicht</Label>
+                <Label HorizontalOptions = "EndAndExpand" Margin="0,0,15,0">sehr</Label>
+            </StackLayout>
             <Button Text="Weiter" Clicked="Button_Clicked"/>
             
         </StackLayout>

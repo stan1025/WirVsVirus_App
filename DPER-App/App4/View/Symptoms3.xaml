@@ -9,13 +9,33 @@
         <StackLayout>
             <Label Text="Haben Sie heute Durchfall?"/>
             <Slider  Maximum="{Binding Diarrhea.Max}" Minimum="{Binding Diarrhea.Min}" Value="{Binding Diarrhea.Value}"/>
+            <StackLayout Orientation="Horizontal" >
+                <Label HorizontalOptions ="Start">gar nicht</Label>
+                <Label HorizontalOptions = "EndAndExpand" Margin="0,0,15,0">sehr stark</Label>
+            </StackLayout>
             <Label Text="Haben Sie Halsschmerzen?"/>
+            
             <Slider Maximum="{Binding Sorethroat.Max}"  Minimum="{Binding Sorethroat.Min}"  Value="{Binding Sorethroat.Value}"/>
-           <Label Text="Haben Sie heute Kopfschmerzen?"/>
-            <Slider Maximum="{Binding Headache.Max}" Minimum="{Binding Headache.Min}"  Value="{Binding Headache.Value}"/>           
+
+            <StackLayout Orientation="Horizontal" >
+                <Label HorizontalOptions ="Start">gar nicht</Label>
+                <Label HorizontalOptions = "EndAndExpand" Margin="0,0,15,0">sehr stark</Label>
+            </StackLayout>
+            <Label Text="Haben Sie heute Kopfschmerzen?"/>
+            
+            <Slider Maximum="{Binding Headache.Max}" Minimum="{Binding Headache.Min}"  Value="{Binding Headache.Value}"/>
+            <StackLayout Orientation="Horizontal" >
+                <Label HorizontalOptions ="Start">gar nicht</Label>
+                <Label HorizontalOptions = "EndAndExpand" Margin="0,0,15,0">sehr stark</Label>
+            </StackLayout>
             <Label Text="Haben Sie heute Atmenot?"/>
+            
             <Slider Maximum="{Binding OutOfBreath.Max}" Minimum="{Binding OutOfBreath.Min}"  Value="{Binding OutOfBreath.Value}"/>
-           <Button Text="Zum Ergebnis" Clicked="Button_Clicked"/>
+            <StackLayout Orientation="Horizontal" >
+                <Label HorizontalOptions ="Start">gar nicht</Label>
+                <Label HorizontalOptions = "EndAndExpand" Margin="0,0,15,0">sehr</Label>
+            </StackLayout>
+            <Button Text="Zum Ergebnis" Clicked="Button_Clicked"/>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>
