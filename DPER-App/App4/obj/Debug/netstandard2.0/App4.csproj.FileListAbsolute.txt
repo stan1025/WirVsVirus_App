@@ -1,0 +1,17 @@
+C:\Users\Melanie\source\repos\App4\App4\App4\bin\Debug\netstandard2.0\App4.deps.json
+C:\Users\Melanie\source\repos\App4\App4\App4\bin\Debug\netstandard2.0\App4.dll
+C:\Users\Melanie\source\repos\App4\App4\App4\bin\Debug\netstandard2.0\ref\App4.dll
+C:\Users\Melanie\source\repos\App4\App4\App4\bin\Debug\netstandard2.0\App4.pdb
+C:\Users\Melanie\source\repos\App4\App4\App4\obj\Debug\netstandard2.0\App.xaml.g.cs
+C:\Users\Melanie\source\repos\App4\App4\App4\obj\Debug\netstandard2.0\View\ContactPersonsPage.xaml.g.cs
+C:\Users\Melanie\source\repos\App4\App4\App4\obj\Debug\netstandard2.0\View\Symptoms1.xaml.g.cs
+C:\Users\Melanie\source\repos\App4\App4\App4\obj\Debug\netstandard2.0\View\Symptoms2.xaml.g.cs
+C:\Users\Melanie\source\repos\App4\App4\App4\obj\Debug\netstandard2.0\View\Symptoms3.xaml.g.cs
+C:\Users\Melanie\source\repos\App4\App4\App4\obj\Debug\netstandard2.0\App4.csproj.CoreCompileInputs.cache
+C:\Users\Melanie\source\repos\App4\App4\App4\obj\Debug\netstandard2.0\App4.AssemblyInfoInputs.cache
+C:\Users\Melanie\source\repos\App4\App4\App4\obj\Debug\netstandard2.0\App4.AssemblyInfo.cs
+C:\Users\Melanie\source\repos\App4\App4\App4\obj\Debug\netstandard2.0\XamlC.stamp
+C:\Users\Melanie\source\repos\App4\App4\App4\obj\Debug\netstandard2.0\App4.dll
+C:\Users\Melanie\source\repos\App4\App4\App4\obj\Debug\netstandard2.0\ref\App4.dll
+C:\Users\Melanie\source\repos\App4\App4\App4\obj\Debug\netstandard2.0\App4.pdb
+C:\Users\Melanie\source\repos\App4\App4\App4\obj\Debug\netstandard2.0\App4.csprojAssemblyReference.cache
