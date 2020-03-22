@@ -24,8 +24,13 @@ namespace DPER_App.ViewModel
         public Command FinishCommand { get; set; }
         public SymptomsViewModel()
         {
-            //TODO: besserer Ort, muss für einen Nutzer fix sein
-            userId = Guid.NewGuid();
+            if (Application.Current.Properties.ContainsKey("userId"))
+                userId = Guid.Parse(Application.Current.Properties["userId"].ToString());
+            else
+            {
+                userId = Guid.NewGuid();
+                Application.Current.Properties["userId"] = userId;
+            }
 
             FinishCommand = new Command(async () => await ExecuteFinishCommand());
                         itfSymptome = new RestClient();
@@ -230,6 +235,7 @@ namespace DPER_App.ViewModel
             {
                 SymptomeInputDataSet data = new SymptomeInputDataSet();
                 data.time = DateTime.Now;
+                Application.Current.Properties["lastEntry"] = data.time;
                 data.userID = userId;
                 data.symptomes = new List<SymptomeInputData>();
                 data.symptomes.Add(new SymptomeInputData() { id = Fever.ID, strength = Fever.Value });
