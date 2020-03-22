@@ -15,7 +15,6 @@ namespace DPER_App.Models
     {
         HttpClient _client;
         const string Url = "http://dper-net.us-east-1.elasticbeanstalk.com/api";
-        //const string Url = "http://172.25.130.146:5000/api";
 
         public RestClient()
         {

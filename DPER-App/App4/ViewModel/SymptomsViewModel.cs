@@ -29,8 +29,8 @@ namespace DPER_App.ViewModel
 
             FinishCommand = new Command(async () => await ExecuteFinishCommand());
                         itfSymptome = new RestClient();
-          // List<SymptomeIdentData> ItemsList = itfSymptome.GetSymptomesAsync().Result;
-            List<SymptomeIdentData> ItemsList = dummyData();
+            List<SymptomeIdentData> ItemsList = itfSymptome.GetSymptomesAsync().Result;
+          //  List<SymptomeIdentData> ItemsList = dummyData();
 
             Fever = new Item<float>();
             Diarrhea = new Item<int>();
@@ -48,92 +48,51 @@ namespace DPER_App.ViewModel
 
             foreach (SymptomeIdentData item in ItemsList)
             {
-                int min = 0;
-                int max = 100;
-                if (!string.IsNullOrWhiteSpace(item.settings) & item.settings.Contains(";"))
-                {
-                   
-                    string input = item.settings;
-                    string pattern = @";";
-
-                    string[] splttingeResults = Regex.Split(input, pattern);
-
-                    foreach (string part in Regex.Split(input, pattern))
-                    {
-                        string test = part.Substring(part.IndexOf("=")+1);
-                        switch (part.Substring(0,part.IndexOf("=")))
-                        {
-                            case "min":
-                            case "Min":
-                                min = int.Parse(part.Substring(part.IndexOf("=")+1));
-                                break;
-                            case "max":
-                            case "Max":
-                                max = int.Parse(part.Substring(part.IndexOf("=")+1));
-                                break;
-                            default: break;
-                        }
-                    }
-                }
                 switch (item.name)
                 {
                     case "Fieber":
-                        Fever.Min = min;
-                        Fever.Max = max;
+                        Fever.parseSettings(item.settings);
                         Fever.ID = item.id;
 
                         break;
                     case "Schüttelfrost":
-                        Frost.Min = min;
-                        Frost.Max = max;
+                        Frost.parseSettings(item.settings);
                         Frost.ID = item.id;
                         break;
                     case "Husten":
-                        Cough.Min = min;
-                        Cough.Max = max;
+                        Cough.parseSettings(item.settings);
                         Cough.ID = item.id;
                         break;
                     case "Abgeschlagenheit":
-                        Limp.Min = min;
-                        Limp.Max = max;
+                        Limp.parseSettings(item.settings);
                         Limp.ID = item.id;
                         break;
                     case "Kurzatmigkeit":
-                        OutOfBreath.Min = min;
-                        OutOfBreath.Max = max;
+                        OutOfBreath.parseSettings(item.settings);
                         OutOfBreath.ID = item.id;
                         break;
                     case "Muskel-/Gelenkschmerz":
-                        Aches.Min = min;
-                        Aches.Max = max;
+                        Aches.parseSettings(item.settings);
                         Aches.ID = item.id;
                         break;
                     case "Halsschmerz":
-                        Sorethroat.Min = min;
-                        Sorethroat.Max = max;
+                        Sorethroat.parseSettings(item.settings);
                         Sorethroat.ID = item.id;
                         break;
                     case "Kopfschmerz":
-                        Headache.Min = min;
-                        Headache.Max = max;
+                        Headache.parseSettings(item.settings);
                         Headache.ID = item.id;
                         break;
                     case "Übelkeit":
-                        Nausea.Min = min;
-                        Nausea.Max = max;
+                        Nausea.parseSettings(item.settings);
                         Nausea.ID = item.id;
                         break;
                     case "Verstopfte Nase":
-
-                        Sniff.Max = max;
-                        Sniff.Min = min;
+                        Sniff.parseSettings(item.settings);
                         Sniff.ID = item.id;
                         break;
                     case "Durchfall":
-
-
-                        Diarrhea.Max = max;
-                        Diarrhea.Min = min;
+                        Diarrhea.parseSettings(item.settings);
                         Diarrhea.ID = item.id;
                         break;
                     default:
