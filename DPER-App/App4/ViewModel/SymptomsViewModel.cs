@@ -28,8 +28,8 @@ namespace DPER_App.ViewModel
 
             FinishCommand = new Command(async () => await ExecuteFinishCommand());
                         itfSymptome = new RestClient();
-            //List<SymptomeIdentData> ItemsList = itfSymptome.GetSymptomesAsync().Result;
-            List<SymptomeIdentData> ItemsList = dummyData();
+            List<SymptomeIdentData> ItemsList = itfSymptome.GetSymptomesAsync().Result;
+            //List<SymptomeIdentData> ItemsList = dummyData();
 
             Fever = new Item<float>();
             Diarrhea = new Item<int>();
@@ -47,9 +47,9 @@ namespace DPER_App.ViewModel
 
             foreach (SymptomeIdentData item in ItemsList)
             {
-                int min = int.Parse(item.settings.Substring(0, item.settings.IndexOf(";")));
+                int min = int.Parse(item.settings.Substring(4, item.settings.IndexOf(";")));
                 string feverSubString = item.settings.Substring(item.settings.IndexOf(";") + 1);
-                int max = int.Parse(feverSubString.Substring(0, feverSubString.IndexOf(";")));
+                int max = int.Parse(feverSubString.Substring(4, feverSubString.IndexOf(";")));
 
                 switch (item.name)
                 {

@@ -14,7 +14,8 @@ namespace DPER_App.Models
     public class RestClient : IBackendSymptome, IBackendFinding
     {
         HttpClient _client;
-        const string Url = "http://dper.us-east-1.elasticbeanstalk.com/api";
+        const string Url = "http://dper-net.us-east-1.elasticbeanstalk.com/api";
+        //const string Url = "http://172.25.130.146:5000/api";
 
         public RestClient()
         {
@@ -29,10 +30,10 @@ namespace DPER_App.Models
 
             try
             {
-                var response = await _client.GetAsync(uri);
+                var response = _client.GetAsync(uri).Result;
                 if (response.IsSuccessStatusCode)
                 {
-                    var content = await response.Content.ReadAsStringAsync();
+                    var content = response.Content.ReadAsStringAsync().Result;
                     Items = JsonConvert.DeserializeObject<List<SymptomeIdentData>>(content);
                 }
             }
