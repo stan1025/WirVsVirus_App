@@ -1,0 +1,16 @@
+D:\Benutzer\Melanie\Documents\GitHub\WirVsVirus_App\DPER-App\App4\bin\Debug\netstandard2.0\DPER-App.deps.json
+D:\Benutzer\Melanie\Documents\GitHub\WirVsVirus_App\DPER-App\App4\bin\Debug\netstandard2.0\DPER-App.dll
+D:\Benutzer\Melanie\Documents\GitHub\WirVsVirus_App\DPER-App\App4\bin\Debug\netstandard2.0\ref\DPER-App.dll
+D:\Benutzer\Melanie\Documents\GitHub\WirVsVirus_App\DPER-App\App4\bin\Debug\netstandard2.0\DPER-App.pdb
+D:\Benutzer\Melanie\Documents\GitHub\WirVsVirus_App\DPER-App\App4\obj\Debug\netstandard2.0\App.xaml.g.cs
+D:\Benutzer\Melanie\Documents\GitHub\WirVsVirus_App\DPER-App\App4\obj\Debug\netstandard2.0\View\ContactPersonsPage.xaml.g.cs
+D:\Benutzer\Melanie\Documents\GitHub\WirVsVirus_App\DPER-App\App4\obj\Debug\netstandard2.0\View\Symptoms1.xaml.g.cs
+D:\Benutzer\Melanie\Documents\GitHub\WirVsVirus_App\DPER-App\App4\obj\Debug\netstandard2.0\View\Symptoms2.xaml.g.cs
+D:\Benutzer\Melanie\Documents\GitHub\WirVsVirus_App\DPER-App\App4\obj\Debug\netstandard2.0\View\Symptoms3.xaml.g.cs
+D:\Benutzer\Melanie\Documents\GitHub\WirVsVirus_App\DPER-App\App4\obj\Debug\netstandard2.0\DPER-App.csproj.CoreCompileInputs.cache
+D:\Benutzer\Melanie\Documents\GitHub\WirVsVirus_App\DPER-App\App4\obj\Debug\netstandard2.0\DPER-App.AssemblyInfoInputs.cache
+D:\Benutzer\Melanie\Documents\GitHub\WirVsVirus_App\DPER-App\App4\obj\Debug\netstandard2.0\DPER-App.AssemblyInfo.cs
+D:\Benutzer\Melanie\Documents\GitHub\WirVsVirus_App\DPER-App\App4\obj\Debug\netstandard2.0\XamlC.stamp
+D:\Benutzer\Melanie\Documents\GitHub\WirVsVirus_App\DPER-App\App4\obj\Debug\netstandard2.0\DPER-App.dll
+D:\Benutzer\Melanie\Documents\GitHub\WirVsVirus_App\DPER-App\App4\obj\Debug\netstandard2.0\ref\DPER-App.dll
+D:\Benutzer\Melanie\Documents\GitHub\WirVsVirus_App\DPER-App\App4\obj\Debug\netstandard2.0\DPER-App.pdb

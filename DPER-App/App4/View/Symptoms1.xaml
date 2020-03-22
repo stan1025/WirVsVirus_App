@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             
+             mc:Ignorable="d"
+             x:Class="DPER_App.View.Symptome1">
+    
+    <ContentPage.Content>
+      <StackLayout>
+          <Label Text="Wie ist Ihre Temperatur" />    
+            <Slider Minimum="0 "  Maximum="45" Value="{Binding FeverValue}" />                      
+            <Label Text="Haben Sie Schüttelfrost"/>
+            <Slider Minimum="0" Maximum="100"  Value="{Binding Frost}" />
+            <Label Text="Fühlen Sie sich schlapp?"/>
+            <Slider Minimum="0"   Maximum="100"  Value="{Binding Limp}"/>
+            <Button Clicked="Button_Clicked" Text="Weiter"/> 
+        </StackLayout>
+  </ContentPage.Content>
+</ContentPage>

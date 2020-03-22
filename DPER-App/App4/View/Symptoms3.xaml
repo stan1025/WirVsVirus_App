@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="DPER_App.View.Symptoms3">
+    <ContentPage.Content>
+        <StackLayout>
+            <Label Text="Haben Sie heute Durchfall?"/>
+            <Slider Minimum="0" Maximum="100" Value="{Binding Diarrhea}"/>
+            <Label Text="Haben Sie Halsschmerzen?"/>
+            <Slider Minimum="0" Maximum="100" Value="{Binding Sorethroat}"/>
+            <Label Text="Haben Sie heute Kopfschmerzen?"/>
+            <Slider Minimum="0" Maximum="100" Value="{Binding Headache}"/>           
+            <Label Text="Haben Sie heute Atmenot?"/>
+            <Slider Minimum="0" Maximum="100" Value="{Binding OutOfBreath}"/>
+            <Button Text="Zum Ergebnis" Command="{Binding FinishCommand}"/>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
