@@ -30,8 +30,8 @@ namespace DPER_App.ViewModel
             set { _contact = value; }
         }
              
-        private int _feverValue;
-        public int FeverValue
+        private float _feverValue;
+        public float FeverValue
         {
             get => _feverValue;
             set { _feverValue = value; }
